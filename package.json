@@ -1,0 +1,39 @@
+{
+    "name": "laploot",
+    "productName": "LapLoot",
+    "version": "0.0.1",
+    "description": "Automatically generate sale offers for your devices in seconds.",
+    "main": "./app/main.js",
+    "scripts": {
+        "start": "electron . --enable-sandbox",
+        "package": "electron-forge package",
+        "make": "electron-forge make"
+    },
+    "keywords": [
+        "sale",
+        "offer",
+        "specifications",
+        "automation",
+        "AI"
+    ],
+    "author": "Paweł Dąbrowski",
+    "license": "UNLICENSED",
+    "dependencies": {
+        "@google/generative-ai": "^0.21.0",
+        "electron-squirrel-startup": "^1.0.1",
+        "toastify-js": "^1.12.0"
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^7.6.1",
+        "@electron-forge/maker-deb": "^7.6.1",
+        "@electron-forge/maker-rpm": "^7.6.1",
+        "@electron-forge/maker-squirrel": "^7.6.1",
+        "@electron-forge/maker-zip": "^7.6.1",
+        "@electron-forge/plugin-auto-unpack-natives": "^7.6.1",
+        "@electron-forge/plugin-fuses": "^7.6.1",
+        "@electron/fuses": "^1.8.0",
+        "@electron/packager": "^18.3.6",
+        "electron": "^34.1.1",
+        "windows-shortcuts": "^0.1.6"
+    }
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src-elem app://root/renderer/dialog.js; style-src 'self'; img-src 'self'; upgrade-insecure-requests">
+        <title>LapLoot</title>
+        <link rel="icon" type="image/svg" href="./logos/logo.svg">
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <script type="text/javascript" src="./dialog.js" defer></script>
+    </head>
+    <body id="body">
+        <main id="main-dialog" class="main-dialog">
+            <label id="dialog-label" class="dialog-label"></label>
+            <button class="menu-button" id="save-button">
+                <svg class="menu-icon" id="down" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20L18 20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 4V16M12 16L15.5 12.5M12 16L8.5 12.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                <svg class="menu-icon" id="check" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+            <button class="menu-button" id="back-button">
+                <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M 18.5625,12 H 5.4375 m 0,0 6.197917,-6.1875 M 5.4375,12 l 6.197917,6.1875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+            <button class="menu-button" id="dont-save-button">
+                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+            </button>
+        </main>
+    </body>
+</html>
