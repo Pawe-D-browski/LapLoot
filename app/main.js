@@ -33,7 +33,7 @@ let specificationsReady = false;
 let specificationsError = false;
 
 
-let settings = {"apiKey": ''};
+let settings = { "apiKey": '' };
 let settingsReady = false;
 let settingsError = false;
 
@@ -48,7 +48,7 @@ protocol.registerSchemesAsPrivileged([
     {
         scheme: 'app',
         privileges: {
-        standard: true
+            standard: true
         }
     }
 ]);
@@ -200,7 +200,7 @@ function createMainWindow() {
         mainWindow.focus();
         return;
     }
-    
+
     mainWindow = new BrowserWindow({
         title: 'LapLoot',
         width: 800,
@@ -240,7 +240,7 @@ function createMainWindow() {
             mainWindow.webContents.openDevTools();
         }
     })
-    
+
     mainWindow.once('ready-to-show', (event) => {
         mainWindowReadyToShow = true;
         initializeIfReady();
@@ -254,7 +254,7 @@ function createDialogWindow(options) {
         dialogWindow.focus();
         return;
     }
-    
+
     dialogWindow = new BrowserWindow({
         parent: mainWindow,
         modal: true,
@@ -300,7 +300,7 @@ function createDialogWindow(options) {
             dialogWindow.webContents.openDevTools();
         }
     })
-    
+
     dialogWindow.once('ready-to-show', (event) => {
         initializeDialog(options);
     });
@@ -338,19 +338,19 @@ function saveSettings(newSettings) {
     const jsonData = JSON.stringify(settings, null, 4);
 
     fs.writeFile(settingsPath, jsonData, (error) => {
-    if (error) {
-        console.error('Error writing file:', error);
-        mainWindow.webContents.send('show-save-error', "Error saving settings");
-    } else {
-        mainWindow.webContents.send('finish-saving-settings', settings);
-    }
+        if (error) {
+            console.error('Error writing file:', error);
+            mainWindow.webContents.send('show-save-error', "Error saving settings");
+        } else {
+            mainWindow.webContents.send('finish-saving-settings', settings);
+        }
     });
 }
 
 function cleanSpecifications(input) {
     input = input.split('\n').filter(line => !line.includes('^^^USB^^^')).join('\n');
     input = input.replace(/\^\^\^.*?\^\^\^/g, '');
-    
+
     return input;
 }
 
@@ -358,7 +358,7 @@ function cleanSpecifications(input) {
 function getSpecifications() {
     const fastfetchPath = path.join(resourcesPath, './fastfetch/internal.exe');
     const configPath = path.join(resourcesPath, './fastfetch/laploot.jsonc');
-    return execFilePromise(fastfetchPath, ['-c', configPath], {timeout: 10000});
+    return execFilePromise(fastfetchPath, ['-c', configPath], { timeout: 10000 });
 }
 
 
@@ -408,7 +408,7 @@ function initializeIfReady() {
     }
 };
 
-function initializeDialog(options){
+function initializeDialog(options) {
     dialogWindow.webContents.send('initialize', options);
 }
 
@@ -466,7 +466,7 @@ async function saveSpecificationsAs(content, defaultDirectory, defaultFilename) 
             { name: 'All Files', extensions: ['*'] }
         ]
     });
-    
+
     if (!result.canceled && result.filePath) {
         fs.writeFile(result.filePath, content.trim().replace("\r", ""), (error) => {
             if (error) {
@@ -511,7 +511,7 @@ async function saveOfferAs(content, defaultDirectory, defaultFilename) {
             { name: 'All Files', extensions: ['*'] }
         ]
     });
-    
+
     if (!result.canceled && result.filePath) {
         fs.writeFile(result.filePath, content.trim().replace("\r", ""), (error) => {
             if (error) {
@@ -540,7 +540,7 @@ async function openSpecifications(openDirectory) {
             { name: 'Text Files', extensions: ['txt'] }
         ]
     });
-    
+
     if (!result.canceled && result.filePaths && result.filePaths[0]) {
         let openPath = result.filePaths[0];
         readFile(openPath, { encoding: 'utf8' }).then((contents) => {
@@ -592,12 +592,12 @@ function checkForUnauthorizedWebContents() {
             webPreferences.nodeIntegration = false
             crash("Unauthorized webview attachment attempt.");
         });
-    
+
         contents.on('will-navigate', (event, navigationUrl) => {
             event.preventDefault()
             crash("Unauthorized navigation attempt.");
         });
-    
+
         contents.setWindowOpenHandler(({ url }) => {
             crash("Unauthorized window opening attempt.")
         });
@@ -615,8 +615,8 @@ function forceCustomSecurityPolicy() {
         }
         callback({
             responseHeaders: {
-            ...details.responseHeaders,
-            'Content-Security-Policy': ["default-src 'none'; " + scriptPolicy + "style-src 'self'; img-src 'self'; upgrade-insecure-requests"],
+                ...details.responseHeaders,
+                'Content-Security-Policy': ["default-src 'none'; " + scriptPolicy + "style-src 'self'; img-src 'self'; upgrade-insecure-requests"],
             }
         });
     })
@@ -640,7 +640,7 @@ function useCustomProtocol() {
 }
 
 
-function validateIPCSender (frame) {
+function validateIPCSender(frame) {
     const host = (new URL(frame.url)).host;
     if (host === 'root') {
         return true;

@@ -558,12 +558,12 @@ function onEscapePressed() {
         forceSaveSettings(() => {
             goBack();
         }, {
-                question: "Would you like <wbr>to save <wbr>your settings?",
-                saveButtonText: "Save settings",
-                backButtonText: "Cancel",
-                backToastText: "Canceled",
-                dontSaveButtonText: "Discard changes",
-                saveButtonIcon: "check"
+            question: "Would you like <wbr>to save <wbr>your settings?",
+            saveButtonText: "Save settings",
+            backButtonText: "Cancel",
+            backToastText: "Canceled",
+            dontSaveButtonText: "Discard changes",
+            saveButtonIcon: "check"
         })
     } else if (menu === "generate") {
         cancelGenerating();

@@ -30,7 +30,7 @@ function generateOffer(window, apiKey, specifications) {
 
     geminiModel.generateContent(prompt).then(result => {
         if (nonce === validNonce) {
-            let offer =  result.response.text().trim();
+            let offer = result.response.text().trim();
             verifyOffer(window, apiKey, specifications, offer, nonce);
         }
     }).catch(error => {

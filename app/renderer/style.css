@@ -14,7 +14,7 @@ html {
 }
 
 
-@media (min-width: 1000px) and (min-height: 600px){
+@media (min-width: 1000px) and (min-height: 600px) {
     html {
         font-size: 25px;
     }
@@ -63,7 +63,7 @@ body {
     align-items: center;
 }
 
-.banner > .banner-icon {
+.banner>.banner-icon {
     height: 1.2rem;
     margin-right: 0.3rem;
 }
@@ -85,7 +85,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.menu-button > .menu-icon {
+.menu-button>.menu-icon {
     height: 1.2rem;
     margin-right: 0.3rem;
 }
@@ -105,7 +105,7 @@ body {
     color: #aaa;
 }
 
-.menu-button:disabled > .menu-icon {
+.menu-button:disabled>.menu-icon {
     stroke: #aaa;
 }
 
@@ -128,7 +128,9 @@ body {
     justify-content: center;
 }
 
-.editor, .settings, .about {
+.editor,
+.settings,
+.about {
     max-width: 45rem;
     min-height: 100vh;
     padding: 1rem;
@@ -146,7 +148,9 @@ body {
     padding-right: 1rem;
 }
 
-.settings-label, .about-label, .dialog-label {
+.settings-label,
+.about-label,
+.dialog-label {
     align-self: flex-start;
     font-size: 0.9rem;
     text-wrap: nowrap;
@@ -157,7 +161,7 @@ body {
     text-align: center;
 }
 
-.setting-label{
+.setting-label {
     background-color: #111;
     color: #aaa;
     font-size: 0.9rem;
@@ -165,7 +169,7 @@ body {
     padding-right: 1rem;
 }
 
-.about-text{
+.about-text {
     background-color: #111;
     color: #aaa;
     font-size: 0.9rem;
@@ -174,7 +178,7 @@ body {
     user-select: text;
 }
 
-.about-text > br {
+.about-text>br {
     background-color: #111;
 }
 
@@ -183,16 +187,16 @@ body {
     color: aaa;
 }
 
-.about-text > br::selection {
+.about-text>br::selection {
     background-color: #111;
 }
 
-.about-text:focus::selection{
+.about-text:focus::selection {
     background-color: #ffdd68;
     color: black;
 }
 
-.about-text:focus > br::selection{
+.about-text:focus>br::selection {
     background-color: #ffdd68;
     color: black;
 }
@@ -200,7 +204,7 @@ body {
 .text-area {
     flex-grow: 1;
     font-family: Arial;
-    font-size:0.7rem;
+    font-size: 0.7rem;
     padding-left: 0.9rem;
     padding-right: 0px;
     padding-top: 0.9rem;
@@ -214,7 +218,7 @@ body {
     outline: none;
     border-radius: 1rem;
     resize: none;
-    overflow-y:scroll;
+    overflow-y: scroll;
     user-select: text;
 }
 
@@ -266,7 +270,7 @@ body {
 .text-setting {
     height: 2rem;
     font-family: Arial;
-    font-size:0.7rem;
+    font-size: 0.7rem;
     padding-left: 0.9rem;
     padding-right: 0.9rem;
     background-color: #222;
@@ -300,10 +304,10 @@ body {
     min-height: 10rem;
     display: flex;
     align-items: center;
-    justify-content:center;
+    justify-content: center;
 }
 
-.animation-icon{
+.animation-icon {
     min-width: 10rem;
     min-height: 10rem;
 }
@@ -311,11 +315,12 @@ body {
 .animation-icon {
     animation: rotateLogo 1s linear infinite;
 }
-  
+
 @keyframes rotateLogo {
     from {
         transform: rotate(0deg);
     }
+
     to {
         transform: rotate(-360deg);
     }

@@ -1,127 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src-elem app://root/renderer/toastify.js app://root/renderer/undoRedo.js app://root/renderer/index.js; style-src 'self'; img-src 'self'; upgrade-insecure-requests">
-        <title>LapLoot</title>
-        <link rel="icon" type="image/svg" href="./logos/logo.svg">
-        <link rel="stylesheet" type="text/css" href="./style.css">
-        <link rel="stylesheet" type="text/css" href="./toastify.css">
-        <script type="text/javascript" src="./toastify.js" defer></script>
-        <script type="text/javascript" src="./undoRedo.js" defer></script>
-        <script type="text/javascript" src="./index.js" defer></script>
-    </head>
-    <body id="body">
-        <nav id="sidebar" class="sidebar">
-            <span id="banner" class="banner">
-                <img src="./logos/logo.svg" id="banner-icon" class="banner-icon"/>
-                <span id="banner-text">
-                    LapLoot
-                </span>
-            </span>
-            <button class="menu-button" id="file-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M 4.6875,11.273438 V 6.6234375 C 4.6875,6.3826765 4.8839357,6.1875 5.12625,6.1875 h 4.5176991 c 0.1047296,0 0.2060077,0.037229 0.2855311,0.104952 l 2.3129288,1.9697835 c 0.07949,0.067723 0.180765,0.104952 0.285553,0.104952 h 6.345788 c 0.242336,0 0.43875,0.1951765 0.43875,0.4359375 v 2.470313 m -14.625,0 v 6.103124 c 0,0.240783 0.1964357,0.435938 0.43875,0.435938 h 13.7475 c 0.242336,0 0.43875,-0.195155 0.43875,-0.435938 v -6.103124 m -14.625,0 h 14.625" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                File
-            </button>
-            <button class="menu-button" id="save-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20L18 20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 4V16M12 16L15.5 12.5M12 16L8.5 12.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Save
-            </button>
-            <button class="menu-button" id="save-as-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20L18 20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 4V16M12 16L15.5 12.5M12 16L8.5 12.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Save as
-            </button>
-            <button class="menu-button" id="new-button">
-                <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M 6.1875,18.87375 V 5.12625 C 6.1875,4.8839357 6.3826765,4.6875 6.6234375,4.6875 H 15.08898 c 0.115597,0 0.22647,0.046222 0.308208,0.1285099 l 2.287655,2.3023552 c 0.08174,0.082288 0.127657,0.1938836 0.127657,0.3102475 V 18.87375 c 0,0.242336 -0.195155,0.43875 -0.435938,0.43875 H 6.6234375 C 6.3826765,19.3125 6.1875,19.116086 6.1875,18.87375 Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="m 14.90625,4.6875 v 2.48625 c 0,0.2423143 0.195155,0.43875 0.435938,0.43875 H 17.8125" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                New
-            </button>
-            <button class="menu-button" id="open-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 20L18 20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M12 16V4M12 4L15.5 7.5M12 4L8.5 7.5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Load specifications
-            </button>
-            <button class="menu-button" id="generate-button">
-                <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 15C12.8747 15 15 12.949 15 8C15 12.949 17.1104 15 22 15C17.1104 15 15 17.1104 15 22C15 17.1104 12.8747 15 8 15Z" stroke-width="1.5" stroke-linejoin="round"></path><path d="M2 6.5C5.13376 6.5 6.5 5.18153 6.5 2C6.5 5.18153 7.85669 6.5 11 6.5C7.85669 6.5 6.5 7.85669 6.5 11C6.5 7.85669 5.13376 6.5 2 6.5Z" stroke-width="1.5" stroke-linejoin="round"></path></svg>
-                Generate offer
-            </button>
-            <button class="menu-button" id="regenerate-button">
-                <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 15C12.8747 15 15 12.949 15 8C15 12.949 17.1104 15 22 15C17.1104 15 15 17.1104 15 22C15 17.1104 12.8747 15 8 15Z" stroke-width="1.5" stroke-linejoin="round"></path><path d="M2 6.5C5.13376 6.5 6.5 5.18153 6.5 2C6.5 5.18153 7.85669 6.5 11 6.5C7.85669 6.5 6.5 7.85669 6.5 11C6.5 7.85669 5.13376 6.5 2 6.5Z" stroke-width="1.5" stroke-linejoin="round"></path></svg>
-                Regenerate offer
-            </button>
-            <button class="menu-button" id="cancel-generating-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Cancel
-            </button>
-            <button class="menu-button" id="reload-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M 19.271659,13.096875 C 18.742381,16.615138 15.706597,19.3125 12.040841,19.3125 8.0022564,19.3125 4.7283405,16.038547 4.7283405,12 c 0,-4.0385841 3.2739159,-7.3125 7.3125005,-7.3125 2.998564,0 5.575634,1.8048639 6.704026,4.3875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="m 15.697091,9.075 h 3.2175 c 0.242336,0 0.43875,-0.1964357 0.43875,-0.43875 v -3.2175" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Reload specifications
-            </button>
-            <button class="menu-button" id="settings-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m 12,14.19381 c 1.211641,0 2.19381,-0.982169 2.19381,-2.19381 0,-1.211641 -0.982169,-2.1938105 -2.19381,-2.1938105 -1.211641,0 -2.1938105,0.9821695 -2.1938105,2.1938105 0,1.211641 0.9821695,2.19381 2.1938105,2.19381 z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="M 17.574033,10.826604 16.771318,8.8882992 17.850161,7.612379 16.387621,6.1498387 15.118647,7.2342758 13.139172,6.4202186 12.683957,4.6872984 H 11.254836 L 10.792746,6.4431731 8.8587632,7.258415 7.612379,6.1498387 6.1498387,7.612379 7.2126448,8.9205117 6.4222369,10.863826 4.6872984,11.26873 v 1.46254 l 1.7558601,0.479347 0.815103,1.933625 -1.1084228,1.243379 1.4625403,1.46254 1.3098219,-1.067435 1.9055731,0.783921 0.440956,1.746054 h 1.46254 l 0.442053,-1.745395 1.938304,-0.802716 c 0.323075,0.230935 1.275994,1.085571 1.275994,1.085571 l 1.46254,-1.46254 -1.085278,-1.280162 0.802934,-1.93889 1.744811,-0.453972 7.3e-5,-1.445867 z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Settings
-            </button>
-            <button class="menu-button" id="confirm-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 13L9 17L19 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Save
-            </button>
-            <button class="menu-button" id="cancel-settings-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Cancel
-            </button>
-            <button class="menu-button" id="about-button">
-                <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="m 12,11.634375 v 3.656251" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="m 12,8.7166866 0.0073,-0.00812" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path><path d="m 12,19.312502 c 4.038549,0 7.312502,-3.273953 7.312502,-7.312502 0,-4.0385852 -3.273953,-7.312502 -7.312502,-7.312502 -4.0385852,0 -7.312502,3.2739168 -7.312502,7.312502 0,4.038549 3.2739168,7.312502 7.312502,7.312502 z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                About LapLoot
-            </button>
-            <button class="menu-button" id="back-button">
-                <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M 18.5625,12 H 5.4375 m 0,0 6.197917,-6.1875 M 5.4375,12 l 6.197917,6.1875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Back
-            </button>
-            <button class="menu-button" id="back-to-specifications-button">
-                <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M 18.5625,12 H 5.4375 m 0,0 6.197917,-6.1875 M 5.4375,12 l 6.197917,6.1875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Specifications
-            </button>
-            <button class="menu-button" id="back-to-offer-button">
-                <svg class="menu-icon" transform="scale(-1, 1)" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M 18.5625,12 H 5.4375 m 0,0 6.197917,-6.1875 M 5.4375,12 l 6.197917,6.1875" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-                Offer
-            </button>
-        </nav>
 
-        <main id="main-content" class="main-content">
-            <div id="specifications-editor" class="editor">
-                <label id="editor-label" class="editor-label">Please verify the following specifications <wbr>and add any missing details, <wbr>then generate the offer:</label>
-                <textarea id="specifications-text-area" class="text-area"></textarea>
-            </div>
-            <div id="animation" class="animation">
-                <img src="./logos/logo.svg" id="animation-icon" class="animation-icon"/>
-            </div>
-            <div id="offer-editor" class="editor">
-                <label id="editor-label" class="editor-label">Please add any final modifications <wbr>to your offer before saving:</label>
-                <textarea id="offer-text-area" class="text-area"></textarea>
-            </div>
-            <div id="settings" class="settings">
-                <label id="settings-label" class="settings-label">General</label>
-                <span class="setting-label">Gemini API key:</span>
-                <input type="text" id="api-key-setting" class="text-setting">
-            </div>
-            <div id="about" class="about">
-                <label id="about-label" class="about-label">Software versions</label>
-                <span class="about-text" tabindex="0">
-                    LapLoot: 0.0.1<br>
-                    FastFetch: 2.36.1<br>
-                    Electron: 34.1.1<br>
-                    Chromium: 132.0.6834.194<br>
-                    Node JS: 20.18.1<br>
-                    V8: v13.2.152.38
-                </span>
-                <label id="about-label" class="about-label">AI model</label>
-                <span class="about-text" tabindex="1">
-                    Gemini 1.5 flash
-                </span>
-                <label id="about-label" class="about-label">Authors</label>
-                <span class="about-text" tabindex="1">
-                    Copyright © 2025 Paweł Dąbrowski
-                </span>
-            </div>
-        </main>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src-elem app://root/renderer/toastify.js app://root/renderer/undoRedo.js app://root/renderer/index.js; style-src 'self'; img-src 'self'; upgrade-insecure-requests">
+    <title>LapLoot</title>
+    <link rel="icon" type="image/svg" href="./logos/logo.svg">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="stylesheet" type="text/css" href="./toastify.css">
+    <script type="text/javascript" src="./toastify.js" defer></script>
+    <script type="text/javascript" src="./undoRedo.js" defer></script>
+    <script type="text/javascript" src="./index.js" defer></script>
+</head>
+
+<body id="body">
+    <nav id="sidebar" class="sidebar">
+        <span id="banner" class="banner">
+            <img src="./logos/logo.svg" id="banner-icon" class="banner-icon" />
+            <span id="banner-text">
+                LapLoot
+            </span>
+        </span>
+        <button class="menu-button" id="file-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M 4.6875,11.273438 V 6.6234375 C 4.6875,6.3826765 4.8839357,6.1875 5.12625,6.1875 h 4.5176991 c 0.1047296,0 0.2060077,0.037229 0.2855311,0.104952 l 2.3129288,1.9697835 c 0.07949,0.067723 0.180765,0.104952 0.285553,0.104952 h 6.345788 c 0.242336,0 0.43875,0.1951765 0.43875,0.4359375 v 2.470313 m -14.625,0 v 6.103124 c 0,0.240783 0.1964357,0.435938 0.43875,0.435938 h 13.7475 c 0.242336,0 0.43875,-0.195155 0.43875,-0.435938 v -6.103124 m -14.625,0 h 14.625"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            File
+        </button>
+        <button class="menu-button" id="save-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 20L18 20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M12 4V16M12 16L15.5 12.5M12 16L8.5 12.5" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            Save
+        </button>
+        <button class="menu-button" id="save-as-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 20L18 20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M12 4V16M12 16L15.5 12.5M12 16L8.5 12.5" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            Save as
+        </button>
+        <button class="menu-button" id="new-button">
+            <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M 6.1875,18.87375 V 5.12625 C 6.1875,4.8839357 6.3826765,4.6875 6.6234375,4.6875 H 15.08898 c 0.115597,0 0.22647,0.046222 0.308208,0.1285099 l 2.287655,2.3023552 c 0.08174,0.082288 0.127657,0.1938836 0.127657,0.3102475 V 18.87375 c 0,0.242336 -0.195155,0.43875 -0.435938,0.43875 H 6.6234375 C 6.3826765,19.3125 6.1875,19.116086 6.1875,18.87375 Z"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="m 14.90625,4.6875 v 2.48625 c 0,0.2423143 0.195155,0.43875 0.435938,0.43875 H 17.8125"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            New
+        </button>
+        <button class="menu-button" id="open-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 20L18 20" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M12 16V4M12 4L15.5 7.5M12 4L8.5 7.5" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+            </svg>
+            Load specifications
+        </button>
+        <button class="menu-button" id="generate-button">
+            <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M8 15C12.8747 15 15 12.949 15 8C15 12.949 17.1104 15 22 15C17.1104 15 15 17.1104 15 22C15 17.1104 12.8747 15 8 15Z"
+                    stroke-width="1.5" stroke-linejoin="round"></path>
+                <path
+                    d="M2 6.5C5.13376 6.5 6.5 5.18153 6.5 2C6.5 5.18153 7.85669 6.5 11 6.5C7.85669 6.5 6.5 7.85669 6.5 11C6.5 7.85669 5.13376 6.5 2 6.5Z"
+                    stroke-width="1.5" stroke-linejoin="round"></path>
+            </svg>
+            Generate offer
+        </button>
+        <button class="menu-button" id="regenerate-button">
+            <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M8 15C12.8747 15 15 12.949 15 8C15 12.949 17.1104 15 22 15C17.1104 15 15 17.1104 15 22C15 17.1104 12.8747 15 8 15Z"
+                    stroke-width="1.5" stroke-linejoin="round"></path>
+                <path
+                    d="M2 6.5C5.13376 6.5 6.5 5.18153 6.5 2C6.5 5.18153 7.85669 6.5 11 6.5C7.85669 6.5 6.5 7.85669 6.5 11C6.5 7.85669 5.13376 6.5 2 6.5Z"
+                    stroke-width="1.5" stroke-linejoin="round"></path>
+            </svg>
+            Regenerate offer
+        </button>
+        <button class="menu-button" id="cancel-generating-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Cancel
+        </button>
+        <button class="menu-button" id="reload-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M 19.271659,13.096875 C 18.742381,16.615138 15.706597,19.3125 12.040841,19.3125 8.0022564,19.3125 4.7283405,16.038547 4.7283405,12 c 0,-4.0385841 3.2739159,-7.3125 7.3125005,-7.3125 2.998564,0 5.575634,1.8048639 6.704026,4.3875"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="m 15.697091,9.075 h 3.2175 c 0.242336,0 0.43875,-0.1964357 0.43875,-0.43875 v -3.2175"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Reload specifications
+        </button>
+        <button class="menu-button" id="settings-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="m 12,14.19381 c 1.211641,0 2.19381,-0.982169 2.19381,-2.19381 0,-1.211641 -0.982169,-2.1938105 -2.19381,-2.1938105 -1.211641,0 -2.1938105,0.9821695 -2.1938105,2.1938105 0,1.211641 0.9821695,2.19381 2.1938105,2.19381 z"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path
+                    d="M 17.574033,10.826604 16.771318,8.8882992 17.850161,7.612379 16.387621,6.1498387 15.118647,7.2342758 13.139172,6.4202186 12.683957,4.6872984 H 11.254836 L 10.792746,6.4431731 8.8587632,7.258415 7.612379,6.1498387 6.1498387,7.612379 7.2126448,8.9205117 6.4222369,10.863826 4.6872984,11.26873 v 1.46254 l 1.7558601,0.479347 0.815103,1.933625 -1.1084228,1.243379 1.4625403,1.46254 1.3098219,-1.067435 1.9055731,0.783921 0.440956,1.746054 h 1.46254 l 0.442053,-1.745395 1.938304,-0.802716 c 0.323075,0.230935 1.275994,1.085571 1.275994,1.085571 l 1.46254,-1.46254 -1.085278,-1.280162 0.802934,-1.93889 1.744811,-0.453972 7.3e-5,-1.445867 z"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Settings
+        </button>
+        <button class="menu-button" id="confirm-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 13L9 17L19 7" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Save
+        </button>
+        <button class="menu-button" id="cancel-settings-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Cancel
+        </button>
+        <button class="menu-button" id="about-button">
+            <svg class="menu-icon" stroke="#fff" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="m 12,11.634375 v 3.656251" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                </path>
+                <path d="m 12,8.7166866 0.0073,-0.00812" stroke-width="1.5" stroke-linecap="round"
+                    stroke-linejoin="round"></path>
+                <path
+                    d="m 12,19.312502 c 4.038549,0 7.312502,-3.273953 7.312502,-7.312502 0,-4.0385852 -3.273953,-7.312502 -7.312502,-7.312502 -4.0385852,0 -7.312502,3.2739168 -7.312502,7.312502 0,4.038549 3.2739168,7.312502 7.312502,7.312502 z"
+                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            About LapLoot
+        </button>
+        <button class="menu-button" id="back-button">
+            <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M 18.5625,12 H 5.4375 m 0,0 6.197917,-6.1875 M 5.4375,12 l 6.197917,6.1875" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Back
+        </button>
+        <button class="menu-button" id="back-to-specifications-button">
+            <svg class="menu-icon" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M 18.5625,12 H 5.4375 m 0,0 6.197917,-6.1875 M 5.4375,12 l 6.197917,6.1875" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Specifications
+        </button>
+        <button class="menu-button" id="back-to-offer-button">
+            <svg class="menu-icon" transform="scale(-1, 1)" viewBox="0 0 24 24" stroke="#fff" stroke-width="1.5"
+                fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 18.5625,12 H 5.4375 m 0,0 6.197917,-6.1875 M 5.4375,12 l 6.197917,6.1875" stroke-width="1.5"
+                    stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            Offer
+        </button>
+    </nav>
+
+    <main id="main-content" class="main-content">
+        <div id="specifications-editor" class="editor">
+            <label id="editor-label" class="editor-label">Please verify the following specifications <wbr>and add any missing details,
+                <wbr>then generate the offer:</label>
+            <textarea id="specifications-text-area" class="text-area"></textarea>
+        </div>
+        <div id="animation" class="animation">
+            <img src="./logos/logo.svg" id="animation-icon" class="animation-icon" />
+        </div>
+        <div id="offer-editor" class="editor">
+            <label id="editor-label" class="editor-label">Please add any final modifications
+                <wbr>to your offer before saving:</label>
+            <textarea id="offer-text-area" class="text-area"></textarea>
+        </div>
+        <div id="settings" class="settings">
+            <label id="settings-label" class="settings-label">General</label>
+            <span class="setting-label">Gemini API key:</span>
+            <input type="text" id="api-key-setting" class="text-setting">
+        </div>
+        <div id="about" class="about">
+            <label id="about-label" class="about-label">Software versions</label>
+            <span class="about-text" tabindex="0">
+                LapLoot: 0.0.1<br>
+                FastFetch: 2.36.1<br>
+                Electron: 34.1.1<br>
+                Chromium: 132.0.6834.194<br>
+                Node JS: 20.18.1<br>
+                V8: v13.2.152.38
+            </span>
+            <label id="about-label" class="about-label">AI model</label>
+            <span class="about-text" tabindex="1">
+                Gemini 1.5 flash
+            </span>
+            <label id="about-label" class="about-label">Authors</label>
+            <span class="about-text" tabindex="1">
+                Copyright © 2025 Paweł Dąbrowski
+            </span>
+        </div>
+    </main>
+</body>
+
 </html>
