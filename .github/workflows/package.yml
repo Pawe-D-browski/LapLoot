@@ -31,14 +31,12 @@ jobs:
         env:
           CI: true
 
-      - name: Zip LapLoot Folder
-        run: |
-          powershell Compress-Archive -Path "out\LapLoot" -DestinationPath "LapLoot.zip"
-        shell: pwsh
-
       - name: Upload Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: LapLoot
-          path: LapLoot.zip
+          path: out\LapLoot
+          retention-days: 90
+          compression-level: 9
+
     
