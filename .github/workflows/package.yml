@@ -47,5 +47,3 @@ jobs:
           path: LapLoot.zip
           retention-days: 90
           compression-level: 0
-          
-    
