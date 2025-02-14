@@ -37,14 +37,14 @@ jobs:
             
       - name: Zip LapLoot Folder with 7-Zip
         run: |
-          7z a -tzip -mx=9 LapLoot/LapLoot "out\LapLoot\*"
+          7z a -tzip -mx=9 LapLoot.zip "out\LapLoot\*"
         shell: cmd
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: LapLoot.zip
-          path: LapLoot/*
+          path: LapLoot.zip
           retention-days: 90
           compression-level: 0
           
