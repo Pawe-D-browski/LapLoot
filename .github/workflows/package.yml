@@ -31,10 +31,14 @@ jobs:
         env:
           CI: true
 
-      - name: Zip LapLoot Folder
+      - name: Install 7-Zip
         run: |
-          powershell Compress-Archive -Path "out\LapLoot" -DestinationPath "LapLoot"
-        shell: pwsh
+          winget install 7zip.7zip
+            
+      - name: Zip LapLoot Folder with 7-Zip
+        run: |
+          7z a LapLoot "out\LapLoot\*"
+        shell: cmd
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
