@@ -356,7 +356,7 @@ function cleanSpecifications(input) {
 
 
 function getSpecifications() {
-    const fastfetchPath = path.join(resourcesPath, './fastfetch/internal.exe');
+    const fastfetchPath = path.join(resourcesPath, './fastfetch/laploot_internal_fastfetch.exe');
     const configPath = path.join(resourcesPath, './fastfetch/laploot.jsonc');
     return execFilePromise(fastfetchPath, ['-c', configPath], { timeout: 10000 });
 }
