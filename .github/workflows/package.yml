@@ -37,7 +37,7 @@ jobs:
             
       - name: Zip LapLoot Folder with 7-Zip
         run: |
-          7z a LapLoot "out\LapLoot\*"
+          7z a -tzip -mx=9 LapLoot "out\LapLoot\*"
         shell: cmd
 
       - name: Upload Artifact
@@ -46,6 +46,6 @@ jobs:
           name: LapLoot.zip
           path: LapLoot
           retention-days: 90
-          compression-level: 9
+          compression-level: 0
           
     
