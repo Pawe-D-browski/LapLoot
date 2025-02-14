@@ -30,3 +30,15 @@ jobs:
           npx electron-forge package
         env:
           CI: true
+
+      - name: Zip LapLoot Folder
+        run: |
+          powershell Compress-Archive -Path "out\LapLoot" -DestinationPath "LapLoot.zip"
+        shell: pwsh
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: LapLoot
+          path: LapLoot.zip
+    
