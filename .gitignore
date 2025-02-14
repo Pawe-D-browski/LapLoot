@@ -1,6 +1,6 @@
 node_modules/
 out/
-app/resources/fastfetch/
+temp/
 settings.json
 desktop.ini
 Thumbs.db
@@ -11,9 +11,7 @@ todo.txt
 *.lnk
 *.tmp
 *.nupkg
-*.dll
 *.pak
-*.exe
 *.asar
 *.bin
 *.dat

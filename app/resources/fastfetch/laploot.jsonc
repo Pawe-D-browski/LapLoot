@@ -1,0 +1,84 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": null,
+    "display": {
+        "showErrors": false,
+        "pipe": true,
+        "size": {
+            "ndigits": 0
+        }
+    },
+    "modules": [
+        {
+            "type": "host",
+            "key": "Name",
+            "format": "{name}"
+        },
+        {
+            "type": "host",
+            "key": "Manufacturer",
+            "format": "{vendor}"
+        },
+        {
+            "type": "chassis",
+            "key": "Chassis",
+            "format": "{type}"
+        },
+        {
+            "type": "os",
+            "key": "OS",
+            "format": "{pretty-name}"
+        },
+        {
+            "type": "cpu",
+            "key": "CPU",
+            "format": "{name} ({cores-physical} cores, {cores-logical} threads)"
+        },
+        {
+            "type": "physicalmemory",
+            "key": "RAM stick {}",
+            "format": "{size} ({type}-{running-speed})"
+        },
+        {
+            "type": "physicaldisk",
+            "key": "Disk {}",
+            "format": "{size} {physical-type}^^^{interconnect}^^^"
+        },
+        {
+            "type": "gpu",
+            "driverSpecific": true,
+            "key": "GPU {}",
+            "format": "{name} ({type}) {dedicated-total}"
+        },
+        {
+            "type": "display",
+            "key": "Display",
+            "format": "{inch}\" - {width}x{height}px @ {refresh-rate}Hz"
+        },
+        {
+            "type": "wifi",
+            "key": "Wi-Fi adapter",
+            "format": "{inf-desc}"
+        },
+        {
+            "type": "sound",
+            "key": "Sound",
+            "format": "{name}"
+        },
+        {
+            "type": "camera",
+            "key": "Camera",
+            "format": "{name}"
+        },
+        {
+            "type": "battery",
+            "key": "Battery",
+            "format": "present"
+        },
+        {
+            "type": "tpm",
+            "key": "TPM version",
+            "format": "{version}"
+        }
+    ]
+}
