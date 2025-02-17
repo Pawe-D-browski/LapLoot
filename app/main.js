@@ -61,7 +61,7 @@ app.whenReady().then(() => {
     useCustomProtocol();
 
     appPath = path.join(app.getAppPath(), "..", "..");
-    settingsPath = isDev ? path.join(__dirname, "./settings.json") : path.join(appPath, './settings.json');
+    settingsPath = isDev ? path.join(__dirname, "./settings.json") : path.join(appPath, '..', './data/settings.json');
     resourcesPath = isDev ? path.join(__dirname, "./resources") : process.resourcesPath
 
     getInitialSpecifications();

@@ -44,12 +44,13 @@ module.exports = {
             fs.rmSync(path.join(outPath, "./LapLoot"), { recursive: true, force: true });
 
             fs.mkdirSync(path.join(outPath, "./LapLoot"));
+            fs.mkdirSync(path.join(outPath, "./LapLoot/data"));
             fs.mkdirSync(path.join(outPath, "./LapLoot/specifications"));
             fs.mkdirSync(path.join(outPath, "./LapLoot/offers"));
 
             fs.renameSync(options.outputPaths[0], path.join(outPath, "./LapLoot/app"));
 
-            fs.renameSync(path.join(outPath, "./LapLoot/app/resources/defaultSettings.json"), path.join(outPath, "./LapLoot/app/settings.json"));
+            fs.renameSync(path.join(outPath, "./LapLoot/app/resources/defaultSettings.json"), path.join(outPath, "./LapLoot/data/settings.json"));
 
             ws.create(path.join(outPath, "./LapLoot/LapLoot.lnk"), {
                 target: "%WINDIR%\\system32\\cmd.exe",
