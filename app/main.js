@@ -550,8 +550,8 @@ function forceCustomSecurityPolicy() {
         let scriptPolicy;
         if (details.url == 'app://root/renderer/index.html') {
             scriptPolicy = 'script-src-elem app://root/renderer/toastify.js app://root/renderer/undoRedo.js app://root/renderer/index.js;'
-        } else if (details.url == 'app://root/renderer/dialog.html') {
-            scriptPolicy = 'script-src-elem app://root/renderer/dialog.js;'
+        } else if (details.url == 'app://root/renderer/saveDialog.html') {
+            scriptPolicy = 'script-src-elem app://root/renderer/saveDialog.js;'
         }
         callback({
             responseHeaders: {

@@ -66,7 +66,7 @@ function createDialogWindow(options) {
     dialogWindow.once('ready-to-show', (event) => {
         initializeDialog(options);
     });
-    dialogWindow.loadURL('app://root/renderer/dialog.html');
+    dialogWindow.loadURL('app://root/renderer/saveDialog.html');
 };
 
 
