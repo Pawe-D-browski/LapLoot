@@ -330,16 +330,16 @@ body {
 }
 
 .animation {
-    min-width: 10rem;
-    min-height: 10rem;
+    width: 10rem;
+    height: 10rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .animation-icon {
-    min-width: 10rem;
-    min-height: 10rem;
+    width: 10rem;
+    height: 10rem;
 }
 
 .animation-icon {
