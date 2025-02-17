@@ -53,6 +53,8 @@ module.exports = {
             fs.renameSync(path.join(outPath, "./LapLoot/app/resources/defaultSettings.json"), path.join(outPath, "./LapLoot/data/settings.json"));
             fs.renameSync(path.join(outPath, "./LapLoot/app/resources/defaultStorage.json"), path.join(outPath, "./LapLoot/data/storage.json"));
 
+            fs.copyFileSync(path.join(outPath, '..', "LICENSE"), path.join(outPath, "./LapLoot/LICENSE.txt"));
+
             ws.create(path.join(outPath, "./LapLoot/LapLoot.lnk"), {
                 target: "%WINDIR%\\system32\\cmd.exe",
                 args: '/c start "" "app\\LapLoot.exe"',
