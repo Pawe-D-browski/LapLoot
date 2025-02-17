@@ -4,7 +4,7 @@ const url = require('url');
 const util = require('util');
 const { readFile } = require('node:fs/promises');
 const { generateOffer, cancelGenerating } = require('./offerGenerator');
-const { setupDialogs } = require('./saveDialog');
+const { setupDialogs } = require('./saveDialogManager');
 
 const { app, session, protocol, net, BrowserWindow, Menu, ipcMain, dialog } = require('electron');
 
