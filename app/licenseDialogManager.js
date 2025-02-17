@@ -8,7 +8,7 @@ let mainWindow = null;
 let dialogWindow = null;
 
 let isDialogResolved = false;
-
+let succesCallback = () => { }
 
 function createDialogWindow(options) {
     if (dialogWindow) {
@@ -21,9 +21,9 @@ function createDialogWindow(options) {
         parent: mainWindow,
         modal: true,
         title: 'LapLoot',
-        width: 400,
+        width: 700,
         height: 400,
-        minWidth: 400,
+        minWidth: 700,
         minHeight: 400,
         resizable: false,
         minimizable: false,
@@ -50,7 +50,7 @@ function createDialogWindow(options) {
     dialogWindow.on('close', (event) => {
         if (!isDialogResolved) {
             event.preventDefault()
-            resolveSaveChangesDialog("cancel")
+            resolveLicenseDialog("decline")
         } else {
             dialogWindow = null;
         }
@@ -66,7 +66,7 @@ function createDialogWindow(options) {
     dialogWindow.once('ready-to-show', (event) => {
         initializeDialog(options);
     });
-    dialogWindow.loadURL('app://root/renderer/saveDialog.html');
+    dialogWindow.loadURL('app://root/renderer/licenseDialog.html');
 };
 
 
@@ -80,42 +80,49 @@ function onDialogInitialized() {
 }
 
 
-function createSaveChangesDialog(options) {
+function createLicenseDialog(options) {
     isDialogResolved = false;
     createDialogWindow(options)
 }
 
 
-function resolveSaveChangesDialog(result) {
+function resolveLicenseDialog(result) {
     isDialogResolved = true;
     dialogWindow.close()
-    mainWindow.webContents.send('finish-save-changes-dialog', result);
+    if (result === "accept") {
+        succesCallback()
+    } else {
+        mainWindow.close()
+    }
 }
 
 
-function setupDialogs(window) {
+function licenseDialog(window, callback) {
+    succesCallback = callback;
     mainWindow = window;
 
-    ipcMain.on('save-changes-dialog-request', async (event, options) => {
+    ipcMain.on('license-dialog-request', async (event, options) => {
         if (!validateIPCSender(event.senderFrame)) {
             return null;
         }
-        createSaveChangesDialog(options);
+        createLicenseDialog(options);
     })
 
-    ipcMain.on('save-dialog-initialized', async (event) => {
+    ipcMain.on('license-dialog-initialized', async (event) => {
         if (!validateIPCSender(event.senderFrame)) {
             return null;
         }
         onDialogInitialized();
     })
 
-    ipcMain.on('resolve-save-dialog', async (event, result) => {
+    ipcMain.on('resolve-license-dialog', async (event, result) => {
         if (!validateIPCSender(event.senderFrame)) {
             return null;
         }
-        resolveSaveChangesDialog(result);
+        resolveLicenseDialog(result);
     })
+
+    createLicenseDialog();
 }
 
 
@@ -136,5 +143,5 @@ function crash(error) {
 
 
 module.exports = {
-    setupDialogs
+    licenseDialog
 };

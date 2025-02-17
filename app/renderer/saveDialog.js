@@ -53,7 +53,7 @@ function initialize(data) {
         body.style.visibility = 'visible'
     }, 1)
 
-    window.API.onceInitialized();
+    window.API.onceSaveDialogInitialized();
 }
 
 function onSaveClicked() {
@@ -69,5 +69,5 @@ function onDontSaveClicked() {
 }
 
 function resolveDialog(result) {
-    window.API.onResolveDialog(result);
+    window.API.onResolveSaveDialog(result);
 }

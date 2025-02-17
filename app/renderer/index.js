@@ -216,8 +216,7 @@ window.API.initialize((data) => {
         errorToast("Error loading settings");
     }
     if (!data.storageError) {
-        storage = data.storage;
-        console.log(storage)
+        updateStorage(data.storage)
     } else {
         errorToast("Error loading storage");
     }
@@ -227,6 +226,11 @@ window.API.initialize((data) => {
     }, 1)
 
     window.API.onceInitialized();
+})
+
+window.API.showSuccess((message) => {
+    successToast(message);
+    enableInput();
 })
 
 window.API.showInfo((message) => {
@@ -341,6 +345,10 @@ window.API.finishSavingSettings((settings) => {
     afterSave();
     enableInput()
     goBack();
+})
+
+window.API.finishSavingStorage((storage) => {
+    updateStorage(storage)
 })
 
 window.API.finishSaveChangesDialog((result) => {
@@ -1044,6 +1052,10 @@ function updateSettings(newSettings) {
     settings = newSettings;
     lastSavedSettings = settings;
     apiKeySetting.value = settings.apiKey;
+}
+
+function updateStorage(newStorage) {
+    storage = newStorage;
 }
 
 function toggleFullScreen() {

@@ -3,10 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src-elem app://root/renderer/licenseDialog.js; style-src 'self'; img-src 'self'; upgrade-insecure-requests">
         <title>LapLoot</title>
         <link rel="icon" type="image/svg" href="./logos/logo.svg">
         <link rel="stylesheet" type="text/css" href="./style.css">
-
+        <script type="text/javascript" src="./licenseDialog.js" defer></script>
     </head>
     <body id="body">
         <main id="main-dialog" class="main-dialog">

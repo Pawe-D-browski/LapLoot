@@ -5,6 +5,7 @@ const util = require('util');
 const { readFile } = require('node:fs/promises');
 const { generateOffer, cancelGenerating } = require('./offerGenerator');
 const { setupDialogs } = require('./saveDialogManager');
+const { licenseDialog } = require('./licenseDialogManager');
 
 const { app, session, protocol, net, BrowserWindow, Menu, ipcMain, dialog } = require('electron');
 
@@ -155,6 +156,13 @@ app.whenReady().then(() => {
         saveSettings(settings);
     })
 
+    ipcMain.on('storage-save-request', async (event, settings) => {
+        if (!validateIPCSender(event.senderFrame)) {
+            return null;
+        }
+        saveStorage(storage);
+    })
+
     ipcMain.on('close-request', async (event) => {
         if (!validateIPCSender(event.senderFrame)) {
             return null;
@@ -271,6 +279,19 @@ function saveSettings(newSettings) {
     });
 }
 
+function saveStorage(newStorage) {
+    storage = newStorage;
+    const jsonData = JSON.stringify(storage, null, 4);
+
+    fs.writeFile(storagePath, jsonData, (error) => {
+        if (error) {
+            console.error('Error writing file:', error);
+            mainWindow.webContents.send('show-error', "Error saving storage");
+        } else {
+            mainWindow.webContents.send('finish-saving-storage', storage);
+        }
+    });
+}
 
 function loadStorage() {
     readFile(storagePath, { encoding: 'utf8' }).then((contents) => {
@@ -371,10 +392,21 @@ function initializeIfReady() {
 
 function onceInitialized() {
     mainWindow.show();
+    if (!storage.licenseAccepted) {
+        licenseDialog(mainWindow, () => {
+            updateLicenseAccepted()
+        });
+    }
 }
 
 function toggleFullScreen(on) {
     mainWindow.setFullScreen(on);
+}
+
+function updateLicenseAccepted() {
+    let newStorage = {...storage}
+    newStorage.licenseAccepted = true;
+    saveStorage(newStorage);
 }
 
 async function saveSpecifications(content, directory, filename) {
@@ -552,6 +584,8 @@ function forceCustomSecurityPolicy() {
             scriptPolicy = 'script-src-elem app://root/renderer/toastify.js app://root/renderer/undoRedo.js app://root/renderer/index.js;'
         } else if (details.url == 'app://root/renderer/saveDialog.html') {
             scriptPolicy = 'script-src-elem app://root/renderer/saveDialog.js;'
+        } else if (details.url == 'app://root/renderer/licenseDialog.html') {
+            scriptPolicy = 'script-src-elem app://root/renderer/licenseDialog.js;'
         }
         callback({
             responseHeaders: {

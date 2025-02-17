@@ -4,6 +4,7 @@ const windowAPI = {
     initialize: (callback) => ipcRenderer.once('initialize', (_event, data) => callback(data)),
     onceInitialized: () => ipcRenderer.send('initialized'),
 
+    showSuccess: (callback) => ipcRenderer.on('show-success', (_event, message) => callback(message)),
     showInfo: (callback) => ipcRenderer.on('show-info', (_event, message) => callback(message)),
     showError: (callback) => ipcRenderer.on('show-error', (_event, message) => callback(message)),
 
@@ -21,6 +22,9 @@ const windowAPI = {
 
     onSettingsSaveRequest: (settings) => ipcRenderer.send('settings-save-request', settings),
     finishSavingSettings: (callback) => ipcRenderer.on('finish-saving-settings', (_event, settings) => callback(settings)),
+
+    onStorageSaveRequest: (settings) => ipcRenderer.send('storage-save-request', settings),
+    finishSavingStorage: (callback) => ipcRenderer.on('finish-saving-storage', (_event, settings) => callback(settings)),
 
     showSaveCancel: (callback) => ipcRenderer.on('show-save-cancel', (_event, message) => callback(message)),
     showSaveError: (callback) => ipcRenderer.on('show-save-error', (_event, message) => callback(message)),
