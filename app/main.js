@@ -16,6 +16,7 @@ const isDev = !app.isPackaged;
 
 let appPath;
 let settingsPath;
+let storagePath;
 let resourcesPath;
 
 let mainWindow = null;
@@ -36,6 +37,10 @@ let specificationsError = false;
 let settings = { "apiKey": '' };
 let settingsReady = false;
 let settingsError = false;
+
+let storage = { "licenseAccepted": false };
+let storageReady = false;
+let storageError = false;
 
 
 const menu = [];
@@ -62,10 +67,12 @@ app.whenReady().then(() => {
 
     appPath = path.join(app.getAppPath(), "..", "..");
     settingsPath = isDev ? path.join(__dirname, "./settings.json") : path.join(appPath, '..', './data/settings.json');
+    storagePath = isDev ? path.join(__dirname, "./storage.json") : path.join(appPath, '..', './data/storage.json');
     resourcesPath = isDev ? path.join(__dirname, "./resources") : process.resourcesPath
 
     getInitialSpecifications();
     loadSettings();
+    loadStorage();
 
     app.on('window-all-closed', (event) => {
         app.quit();
@@ -347,6 +354,30 @@ function saveSettings(newSettings) {
     });
 }
 
+
+function loadStorage() {
+    readFile(storagePath, { encoding: 'utf8' }).then((contents) => {
+        try {
+            storage = JSON.parse(contents);
+            storageReady = true;
+            initializeIfReady();
+        } catch (jsonError) {
+            console.error(jsonError);
+            storageError = true;
+            initializeIfReady();
+        }
+    }).catch((error) => {
+        if (error.code === 'ENOENT') {
+            storageReady = true;
+            initializeIfReady();
+        } else {
+            console.error(error)
+            storageError = true;
+            initializeIfReady();
+        }
+    });
+}
+
 function cleanSpecifications(input) {
     input = input.split('\n').filter(line => !line.includes('^^^USB^^^')).join('\n');
     input = input.replace(/\^\^\^.*?\^\^\^/g, '');
@@ -396,14 +427,26 @@ function reloadSpecifications() {
 }
 
 
+function isReadyToShow() {
+    return (
+        (mainWindowReadyToShow)
+        && (specificationsReady || specificationsError)
+        && (settingsReady || settingsError)
+        && (storageReady || storageError)
+    )
+}
+
+
 function initializeIfReady() {
-    if ((mainWindowReadyToShow) && (specificationsReady || specificationsError) && (settingsReady || settingsError)) {
+    if (isReadyToShow()) {
         mainWindow.webContents.send('initialize', {
             specificationsError: specificationsError,
             settingsError: settingsError,
+            storageError: storageError,
             specifications: specifications,
             deviceName: deviceName,
-            settings: settings
+            settings: settings,
+            storage: storage
         });
     }
 };

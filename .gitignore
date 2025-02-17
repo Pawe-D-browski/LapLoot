@@ -2,6 +2,7 @@ node_modules/
 out/
 temp/
 settings.json
+storage.json
 desktop.ini
 Thumbs.db
 todo.txt

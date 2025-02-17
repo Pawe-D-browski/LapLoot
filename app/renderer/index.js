@@ -54,6 +54,7 @@ let menu = "initial";
 let isGenerating = false;
 
 let settings = { apiKey: '' };
+let storage = { licenseAccepted: false}
 let lastSavedSettings = null;
 
 let haveOffer = false;
@@ -213,6 +214,12 @@ window.API.initialize((data) => {
         updateSettings(data.settings);
     } else {
         errorToast("Error loading settings");
+    }
+    if (!data.storageError) {
+        storage = data.storage;
+        console.log(storage)
+    } else {
+        errorToast("Error loading storage");
     }
 
     setTimeout(() => {

@@ -11,7 +11,7 @@ module.exports = {
         name: 'LapLoot',
         asar: true,
         icon: "./app/renderer/logos/logo.ico",
-        extraResource: ["./app/resources/fastfetch", "./app/resources/defaultSettings.json"],
+        extraResource: ["./app/resources/fastfetch", "./app/resources/defaultSettings.json", "./app/resources/defaultStorage.json"],
         appCopyright: "Copyright © 2025 Paweł Dąbrowski"
     },
     rebuildConfig: {},
@@ -51,6 +51,7 @@ module.exports = {
             fs.renameSync(options.outputPaths[0], path.join(outPath, "./LapLoot/app"));
 
             fs.renameSync(path.join(outPath, "./LapLoot/app/resources/defaultSettings.json"), path.join(outPath, "./LapLoot/data/settings.json"));
+            fs.renameSync(path.join(outPath, "./LapLoot/app/resources/defaultStorage.json"), path.join(outPath, "./LapLoot/data/storage.json"));
 
             ws.create(path.join(outPath, "./LapLoot/LapLoot.lnk"), {
                 target: "%WINDIR%\\system32\\cmd.exe",
