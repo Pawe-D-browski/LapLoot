@@ -407,6 +407,7 @@ function updateLicenseAccepted() {
     let newStorage = {...storage}
     newStorage.licenseAccepted = true;
     saveStorage(newStorage);
+    mainWindow.webContents.send('show-success', "License terms accepted");
 }
 
 async function saveSpecifications(content, directory, filename) {

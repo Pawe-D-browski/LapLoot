@@ -174,10 +174,13 @@ body {
 
 .license-label {
     max-width: fit-content;
-    padding-bottom: 1rem;
+    padding-bottom: 0px;
     text-align: left;
     flex-shrink: 1;
     text-wrap: wrap;
+    display:flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .license-list {
@@ -189,6 +192,19 @@ body {
 .license-item {
     max-width: fit-content;
     font-size: 0.8rem;
+    padding-bottom: 0.5rem;
+}
+
+.license-buttons-container{
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.license-button {
+    width: 12rem;
 }
 
 .setting-label {
