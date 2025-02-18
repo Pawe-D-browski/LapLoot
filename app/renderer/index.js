@@ -538,11 +538,11 @@ function onBackToSpecificationsClicked() {
     forceSaveOffer(() => {
         backToSpecifications();
     }, {
-        question: "Would you like <wbr>to save <wbr>your offer <wbr>before switching?",
-        saveButtonText: "Save and go",
-        backButtonText: "Don't go",
+        question: "Would you like <wbr>to save <wbr>your offer <wbr>before switching to specifications?",
+        saveButtonText: "Save and switch",
+        backButtonText: "Don't switch",
         backToastText: "Switching canceled",
-        dontSaveButtonText: "Go without saving",
+        dontSaveButtonText: "Switch without saving",
         saveButtonIcon: "down"
     })
 }
@@ -552,11 +552,11 @@ function onBackToOfferClicked() {
     forceSaveSpecifications(() => {
         backToOffer();
     }, {
-        question: "Would you like <wbr>to save <wbr>your specifications <wbr>before going to offer?",
-        saveButtonText: "Save and go",
-        backButtonText: "Don't go",
+        question: "Would you like <wbr>to save <wbr>your specifications <wbr>before switching to offer?",
+        saveButtonText: "Save and switch",
+        backButtonText: "Don't switch",
         backToastText: "Switching canceled",
-        dontSaveButtonText: "Go without saving",
+        dontSaveButtonText: "Switch without saving",
         saveButtonIcon: "down"
     })
 }
