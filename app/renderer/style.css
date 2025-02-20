@@ -14,14 +14,14 @@ html {
 }
 
 
-@media (min-width: 1000px) and (min-height: 600px) {
+@media (min-width: 1000px) and (min-height: 700px) {
     html {
         font-size: 25px;
     }
 }
 
 
-@media (min-width: 1200px) and (min-height: 700px) {
+@media (min-width: 1200px) and (min-height: 800px) {
     html {
         font-size: 30px;
     }

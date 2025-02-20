@@ -194,9 +194,9 @@ function createMainWindow() {
     mainWindow = new BrowserWindow({
         title: 'LapLoot',
         width: 800,
-        height: 500,
+        height: 600,
         minWidth: 800,
-        minHeight: 500,
+        minHeight: 600,
         backgroundColor: '#111',
         show: false,
         icon: path.join(__dirname, './renderer/logos/logo.png'),
