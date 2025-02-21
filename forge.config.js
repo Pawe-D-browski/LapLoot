@@ -56,10 +56,11 @@ module.exports = {
             fs.copyFileSync(path.join(__dirname, "LICENSE"), path.join(outPath, "./LapLoot/LICENSE.txt"));
             fs.copyFileSync(path.join(__dirname, "/app/renderer/logos/logo.ico"), path.join(outPath, "./LapLoot/app/logo.ico"));
 
-            ws.create(path.join(outPath, "./LapLoot/LapLoot.lnk"), {
+            ws.create(path.join(outPath, "./LapLoot/Run LapLoot.lnk"), {
                 target: "%WINDIR%\\system32\\cmd.exe",
                 args: '/c start "" "app\\LapLoot.exe"',
-                icon: path.join(outPath, "./LapLoot/app/logo.ico"),
+                icon: '%SystemRoot%\\System32\\SHELL32.dll',
+                iconIndex: 263,
                 desc: "Automatically generate sale offers for your devices in seconds.",
             });
         },
