@@ -1,7 +1,7 @@
 {
     "name": "laploot",
     "productName": "LapLoot",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "Automatically generate sale offers for your devices in seconds.",
     "main": "./app/main.js",
     "scripts": {
