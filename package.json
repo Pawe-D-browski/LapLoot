@@ -33,7 +33,7 @@
         "@electron-forge/plugin-fuses": "^7.7.0",
         "@electron/fuses": "^1.8.0",
         "@electron/packager": "^18.3.6",
-        "electron": "^34.3.0",
+        "electron": "^34.3.3",
         "windows-shortcuts": "^0.1.6"
     }
 }
